@@ -1,0 +1,14 @@
+type Query {
+    issue(issueId: Int!): Issue
+}
+
+type Issue @key(fields: "id") {
+    id: ID!
+    description: String
+    assigneeId: User
+}
+
+type User @key(fields: "id") @extends {
+    id: ID! @external
+    issues: [Issue]
+}
