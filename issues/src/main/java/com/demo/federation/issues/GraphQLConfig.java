@@ -20,20 +20,10 @@ public class GraphQLConfig {
                 .fetchEntities(env -> env.<List<Map<String, Object>>>getArgument(_Entity.argumentName)
                         .stream()
                         .map(values -> {
-                            if ("User".equals(values.get("__typename"))) {
-                                final Object id = values.get("id");
-                                if (id instanceof String) {
-                                    return issueService.lookupUser((String) id);
-                                }
-                            }
                             return null;
                         })
                         .collect(Collectors.toList()))
                 .resolveEntityType(env -> {
-                    final Object src = env.getObject();
-                    if (src instanceof User) {
-                        return env.getSchema().getObjectType("User");
-                    }
                     return null;
                 })
                 .build();

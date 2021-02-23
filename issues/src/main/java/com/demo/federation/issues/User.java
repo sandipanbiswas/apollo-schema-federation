@@ -6,8 +6,6 @@ public class User {
 
     private String id;
 
-    private List<Issue> issues;
-
     public String getId() {
         return id;
     }
@@ -16,11 +14,4 @@ public class User {
         this.id = id;
     }
 
-    public List<Issue> getIssues() {
-        return issues;
-    }
-
-    public void setIssues(List<Issue> issues) {
-        this.issues = issues;
-    }
 }
